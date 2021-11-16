@@ -58,7 +58,7 @@ def game():
         gameBorder((32,32,32), (32,32,32), (32,32,32), (32,32,32)) #dark grey
         playfieldGrid((102,102,255)) #blue
         tetromino = currentPiece()
-        tetromino.renderPiece(screen, "I", 400, 300)
+        tetromino.renderPiece(screen, "J", 400, 300)
 
         pygame.display.update()
         clock.tick(pace)
