@@ -31,6 +31,25 @@ def playfieldGrid(gridColor):
             grid = pygame.Rect(x, y, 40, 40)
             pygame.draw.rect(screen, gridColor, grid, 1)
 
+def renderI(screen, orientation, x, y):
+    blue = pygame.transform.scale(pygame.image.load('blueBlock.png'), (40,40))
+    if orientation == 'v':
+        for i in range(4):
+            screen.blit(blue, (x,y+i*40))
+    if orientation == 'h':
+        for i in range(4):
+            screen.blit(blue, (x+i*40,y))
+
+def get_input():
+    if pygame.key.get_pressed()[pygame.K_LEFT]:
+        return "left"
+    if pygame.key.get_pressed()[pygame.K_RIGHT]:
+        return "right"
+    if pygame.key.get_pressed()[pygame.K_DOWN]:
+        return "down"
+
+
+
 def game():
     #game
     exitGame = False
@@ -43,6 +62,8 @@ def game():
         screen.fill((64,64,64)) #grey
         gameBorder((32,32,32), (32,32,32), (32,32,32), (32,32,32)) #dark grey
         playfieldGrid((102,102,255)) #blue
+
+        renderI(screen, 'v',400,300)
 
         pygame.display.update()
         clock.tick(pace)
